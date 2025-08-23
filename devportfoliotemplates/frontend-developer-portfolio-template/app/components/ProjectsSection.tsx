@@ -5,15 +5,15 @@ import { motion } from 'framer-motion';
 
 const projects = [
 	{
-		title: 'E-commerce Dashboard',
-		description: 'A modern dashboard with dark mode, real-time charts, and responsive design',
-		image: '/laptop.jpg',
+		title: 'Weather App',
+		description: 'Your daily forecast, simplified. Clear visuals, accurate updates, and the info you need at a glance.',
+		image: '/weather.jpeg',
 		tags: ['React', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
 	},
 	{
-		title: 'Social Media App',
-		description: 'Full-featured social platform with real-time messaging and notifications',
-		image: '/code.jpg',
+		title: 'Dictionary App',
+		description: 'Full dictionary lookup via verified API + contextual images',
+		image: '/dictionary.jpeg',
 		tags: ['Next.js', 'Socket.io', 'Prisma', 'TailwindCSS'],
 	},
 ];
