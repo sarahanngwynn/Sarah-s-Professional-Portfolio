@@ -11,26 +11,26 @@ const projects = [
       'Your daily forecast, simplified. Clear visuals, accurate updates, and the info you need at a glance.',
     image: '/weather.jpeg',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
-    url: 'https://sarahanngwynn.netlify.app/projects.html', // <-- link on image
+    url: 'https://sarahanngwynn.netlify.app/projects.html',
   },
   {
     title: 'Dictionary App',
-    description: 'Full dictionary lookup via verified API + contextual images',
+    description: 'Full dictionary lookup via verified API + contextual images.',
     image: '/dictionary.jpeg',
-    tags: ['Next.js', 'Socket.io', 'Prisma', 'TailwindCSS'],
-    url: 'https://sarahanngwynn.netlify.app/projects.html', // <-- link on image
+    tags: ['Next.js', 'Socket.io', 'Prisma', 'Tailwind CSS'],
+    url: 'https://sarahanngwynn.netlify.app/projects.html',
   },
 ];
 
 export default function ProjectsSection() {
   return (
-    <section className="py-20 px-4">
+    <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text"
         >
           Featured Projects
         </motion.h2>
@@ -50,12 +50,12 @@ export default function ProjectsSection() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Open ${project.title} details`}
+                aria-label={`Open ${project.title}`}
                 className="block aspect-video relative overflow-hidden"
               >
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} screenshot`}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   priority={index === 0}
@@ -68,7 +68,10 @@ export default function ProjectsSection() {
                 <p className="text-gray-400 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, i) => (
-                    <span key={i} className="text-sm px-3 py-1 bg-gray-800 rounded-full">
+                    <span
+                      key={i}
+                      className="text-sm px-3 py-1 bg-gray-800 rounded-full text-gray-300"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -81,4 +84,5 @@ export default function ProjectsSection() {
     </section>
   );
 }
+
 

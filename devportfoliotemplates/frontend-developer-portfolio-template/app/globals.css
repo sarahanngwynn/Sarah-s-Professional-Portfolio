@@ -2,6 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	background-color: #101828;
+/* --- Base resets & typography --- */
+@layer base {
+  :root {
+    --bg: #0b0b10;            /* page background */
+    --fg: 221 221 221;        /* default text color (HSL sRGB-ish) */
+    --muted: 160 160 175;     /* secondary text */
+    --brand-start: 59 130 246; /* blue-500 */
+    --brand-end: 168 85 247;   /* purple-500 */
+  }
+
+  html {
+    scroll-behavior: smooth; /* smooth anchor scrolling */
+  }
+
+  body {
+    background-color: var(--bg);
+    color: hsl(0 0% 92%);     /* slightly off-white for better contrast */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: linear-gradient(
+      90deg,
+      rgb(var(--brand-start)) 0%,
+      rgb(var(--brand-end)) 100%
+    );
+    color: #0b0b10;
+  }
+
+  /* Links */
+  a {
+    @apply underline-offset-2 decoration-transparent hover:decoration-slate-400 transition-colors;
+  }
 }
+
+/* --- Reusable utilities --- */
+@layer utilities {
+  /* Pretty gradient text helper */
+  .gradient-text {
+    background-image: linear-gradient(90deg, rgb(var(--brand-start)), rgb(var(--brand-end)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glass card backdrop for your Contact/Project cards */
+  .glass {
+    @apply backdrop-blur-xl border border-gray-800/80 bg-gray-900/50;
+  }
+
+  /* Subtle grid mask (pairs with /public/grid.svg) */
+  .mask-fade {
+    /* fade out toward bottom to keep busy backgrounds from fighting text */
+    -webkit-mask-image: linear-gradient(180deg, #fff 70%, rgba(255,255,255,0));
+            mask-image: linear-gradient(180deg, #fff 70%, rgba(255,255,255,0));
+  }
+
+  /* When you add a sticky header, this offsets anchor jumps */
+  .scroll-offset {
+    scroll-margin-top: 80px; /* match your navbar height */
+  }
+}
+
+/* --- Media-accessibility niceties --- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
